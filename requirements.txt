@@ -1,0 +1,10 @@
+fastapi[standard]
+numpy
+pandas
+python-box
+requests
+bs4
+scikit-learn
+lxml
+nltk
+# code-oss --enable-proposed-api ms-python.debugpy --enable-proposed-api ms-python.python & disown
