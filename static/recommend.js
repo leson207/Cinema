@@ -1,11 +1,10 @@
-// Replace 'YOUR_API_KEY' below with your API key retrieved from https://www.themoviedb.org
-var myAPI = '5b6b661b4c9d27a558e2345c7dc481f7'  // global string to be consistent with future usages elsewhere
+var myAPI = 'YOUR_API_KEY'
 $(function() {
   $('#movie_list').css('display','none');
   $('#autoComplete').blur(function() {
     $('#movie_list').css('display','none');
   });
-  // Button will be disabled until we type something inside the input field
+
   const source = document.getElementById('autoComplete');
   const inputHandler = function(e) {
     $('#movie_list').css('display','block');
@@ -54,7 +53,6 @@ function recommendcard(id){
 }
 
 
-// get the details of the movie from the API (based on the name of the movie)
 function load_details(my_api_key,search,isQuerySearch){
   if(isQuerySearch) {
     url = 'https://api.themoviedb.org/3/search/movie?api_key='+my_api_key+'&query='+search;
@@ -129,7 +127,6 @@ function load_details(my_api_key,search,isQuerySearch){
   });
 }
 
-// get all the details of the movie using the movie id.
 function get_movie_details(movie_id,my_api_key,movie_title,movie_title_org) {
   $.ajax({
     type:'GET',
@@ -144,7 +141,6 @@ function get_movie_details(movie_id,my_api_key,movie_title,movie_title_org) {
   });
 }
 
-// passing all the details to python's flask for displaying and scraping the movie reviews using imdb id
 function show_details(movie_details,movie_title,my_api_key,movie_id,movie_title_org){
   var imdb_id = movie_details.imdb_id;
   var poster;
@@ -229,7 +225,6 @@ function show_details(movie_details,movie_title,my_api_key,movie_id,movie_title_
   });
 }
 
-// getting the details of individual cast
 function get_individual_cast(movie_cast,my_api_key) {
     cast_bdays = [];
     cast_bios = [];
@@ -259,7 +254,6 @@ function get_individual_cast(movie_cast,my_api_key) {
     return {cast_bdays:cast_bdays,cast_bios:cast_bios,cast_places:cast_places};
   }
 
-// getting the details of the cast for the requested movie
 function get_movie_cast(movie_id,my_api_key){
     cast_ids= [];
     cast_names = [];
@@ -300,7 +294,6 @@ function get_movie_cast(movie_id,my_api_key){
     return {cast_ids:cast_ids,cast_names:cast_names,cast_chars:cast_chars,cast_profiles:cast_profiles};
   }
 
-  // getting recommendations
   function get_recommendations(movie_id, my_api_key) {
     rec_movies = [];
     rec_posters = [];
